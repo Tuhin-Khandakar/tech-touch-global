@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tech Touch Global Services
 
-## Getting Started
+Premium multi-service corporate website for **Tech Touch Global Services** (Bangladesh) — technology, study abroad, visa, IELTS/PTE, travel, investment, and export/import consultancy. Bilingual EN / বাংলা.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, React Server Components, `proxy.ts`)
+- **TypeScript** + **Tailwind v4**
+- **Supabase** — Postgres + Storage + Realtime + RLS
+- **Cabinet Grotesk / General Sans / Anek Bangla** typography
+- **reCAPTCHA v3** on public forms
+- Cookie-based HMAC-signed admin auth
+
+## Local setup
 
 ```bash
+npm install
+cp .env.local.example .env.local   # fill in Supabase + admin secrets
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the SQL migrations against your Supabase project in order:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. `supabase-schema.sql`
+2. `supabase-cms-migration.sql`
+3. `supabase-settings-keys.sql`
+4. `supabase-phase7-about.sql`
+5. `supabase-security-hardening.sql` (RLS hardening)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a public Storage bucket called `media`.
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/[lang]/` — public site, locale-prefixed (`en` / `bn`)
+- `src/app/admin/(panel)/` — auth-guarded admin shell, full CMS
+- `src/app/api/` — REST routes (public + `/admin/*` for CRUD)
+- `src/lib/` — cached server helpers (`getSiteSettings`, `getAllContent`, `getAboutValues`, etc.)
+- `src/components/` — UI primitives, layout, admin chrome, public sections
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Content lives in Supabase tables and is edited entirely from `/admin`. Server helpers wrap reads in `unstable_cache`; admin saves call `revalidatePath('/', 'layout')` so the public site picks up changes without a restart.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Brand palette
 
-## Deploy on Vercel
+`#0F172A` primary · `#2563EB` secondary · `#06B6D4` accent · `#F59E0B` gold · `#FFFFFF` white
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+(WhatsApp green `#25D366` is reserved for the WhatsApp button.)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+Designed for **Vercel**. Push to `main`, set the env vars in the Vercel dashboard, and the build picks up the same `.env.local` keys.

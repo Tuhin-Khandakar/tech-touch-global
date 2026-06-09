@@ -36,6 +36,17 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local tooling / IDE / agent configs — never push
+.claude/
+.agents/
+.mcp.json
+skills-lock.json
+.vscode/
+.idea/
+
+# logs
+*.log
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

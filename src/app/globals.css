@@ -1,26 +1,266 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   BRAND PALETTE — five colors only
+   Every visible color in the app must be one of these five,
+   or a tint/shade derived from them (rgba navy on white,
+   rgba white on navy, or a darken/lighten via opacity blend).
+   The ONLY off-palette exception is the WhatsApp green (#25D366)
+   on the floating WhatsApp button for brand recognition.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* Fonts */
+  --font-display: 'Cabinet Grotesk', sans-serif;
+  --font-body:    'General Sans', sans-serif;
+  --font-bangla:  'Anek Bangla', sans-serif;
+
+  /* ── THE 5 BRAND COLORS ── */
+  --color-primary:   #0F172A;   /* Dark Blue (navy)        */
+  --color-secondary: #2563EB;   /* Electric Blue           */
+  --color-accent:    #06B6D4;   /* Cyan                    */
+  --color-gold:      #F59E0B;   /* Premium Gold            */
+  /* white is the background — bg-white / text-white */
+
+  /* ── DERIVED SHADES ──
+     A slightly darker brand variant for hover states. These are
+     mixes of the two adjacent brand colors (navy + electric blue);
+     they are NOT new hues. */
+  --color-primary-dark:   #060B17;   /* navy darkened    */
+  --color-secondary-dark: #1F4FCC;   /* electric blue × 12% navy mix (hover) */
+
+  /* ── NEUTRAL SCALE (pure navy × white tints, no other hue) ──
+     Computed from #0F172A on #FFFFFF at varying alphas. */
+  --color-tint-1:    #F7F8FA;   /* ~ rgba(15,23,42,0.04) — faint surface tint  */
+  --color-tint-2:    #EEF0F4;   /* ~ rgba(15,23,42,0.07) — hover/zebra surface */
+  --color-tint-3:    #E5E7EC;   /* ~ rgba(15,23,42,0.10) — borders, lines      */
+  --color-tint-4:    #D0D4DC;   /* ~ rgba(15,23,42,0.18) — stronger lines      */
+  --color-tint-5:    #94A0B5;   /* ~ rgba(15,23,42,0.45) — faint text on white */
+  --color-tint-6:    #62697A;   /* ~ rgba(15,23,42,0.65) — muted text on white */
+
+  /* Legacy aliases (kept identical to the canonical names so older
+     code that already uses text-muted / bg-surface / border-border
+     keeps working under the strict palette). */
+  --color-surface:  #F7F8FA;    /* === --color-tint-1 */
+  --color-muted:    #62697A;    /* === --color-tint-6 (≥ 7:1 on white) */
+  --color-border:   #E5E7EC;    /* === --color-tint-3 */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Semantic text/background tokens (CSS custom properties)
+   — used via arbitrary values when needed: text-[var(--on-dark-muted)]
+   ───────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Text on white surface */
+  --on-light:        #0F172A;                    /* body — 16.7:1   */
+  --on-light-muted:  rgba(15, 23, 42, 0.65);     /* secondary       */
+  --on-light-faint:  rgba(15, 23, 42, 0.45);     /* tertiary        */
+
+  /* Text on navy surface */
+  --on-dark:         #FFFFFF;                    /* body            */
+  --on-dark-muted:   rgba(255, 255, 255, 0.78);  /* secondary       */
+  --on-dark-faint:   rgba(255, 255, 255, 0.55);  /* tertiary        */
+  --on-dark-line:    rgba(255, 255, 255, 0.12);  /* borders on navy */
+  --on-dark-subtle:  rgba(255, 255, 255, 0.06);  /* surfaces on navy*/
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─────────────────────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #FFFFFF;
+    color: #0F172A;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  :lang(bn),
+  :lang(bn) h1, :lang(bn) h2, :lang(bn) h3, :lang(bn) h4,
+  :lang(bn) p, :lang(bn) span, :lang(bn) a {
+    font-family: var(--font-bangla);
+    letter-spacing: 0;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563EB;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: #2563EB;
+    color: #FFFFFF;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────────────────────────
+   GRAIN TEXTURE  (monochrome — passes palette rule)
+   ───────────────────────────────────────────────────────────── */
+.grain {
+  position: relative;
+  isolation: isolate;
 }
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+.grain > * { position: relative; z-index: 2; }
+
+/* ─────────────────────────────────────────────────────────────
+   GRADIENT TEXT (brand only — navy → electric blue → cyan)
+   ───────────────────────────────────────────────────────────── */
+.gradient-brand {
+  background: linear-gradient(110deg, #2563EB 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-gold {
+  /* Gold sole-accent — no red end; fade to navy for depth */
+  background: linear-gradient(110deg, #F59E0B 5%, #0F172A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   GLASS (translucent white on dark)
+   ───────────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SHADOWS — neutral navy tints only
+   ───────────────────────────────────────────────────────────── */
+.shadow-card {
+  box-shadow:
+    0 1px 3px  rgba(15, 23, 42, 0.04),
+    0 4px 16px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+.shadow-card-hover {
+  box-shadow:
+    0 2px 6px   rgba(15, 23, 42, 0.06),
+    0 12px 32px rgba(15, 23, 42, 0.10),
+    0 0 0 1px  rgba(15, 23, 42, 0.06);
+}
+.shadow-brand {
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.30);
+}
+.shadow-brand-hover {
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.42);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   reCAPTCHA badge — hidden, branding shown inline via
+   <RecaptchaNotice/> as Google's TOS requires for hidden badges.
+   ───────────────────────────────────────────────────────────── */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ADMIN TOAST / DRAWER animations
+   ───────────────────────────────────────────────────────────── */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes drawer-in {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────────────────────────── */
+.container-site,
+.container-custom {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 640px)  {
+  .container-site, .container-custom { padding-inline: 2rem; }
+}
+@media (min-width: 1024px) {
+  .container-site, .container-custom { padding-inline: 3rem; }
+}
+
+.section-padding,
+.section-gap {
+  padding-block: 5rem;
+}
+@media (min-width: 768px)  { .section-padding, .section-gap { padding-block: 7rem; } }
+@media (min-width: 1024px) { .section-padding, .section-gap { padding-block: 8rem; } }
+
+.hero-gradient {
+  background: #0F172A;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MARQUEE
+   ───────────────────────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ─────────────────────────────────────────────────────────────
+   CITY PULSE (globe hero)
+   ───────────────────────────────────────────────────────────── */
+@keyframes city-pulse {
+  0%   { r: 4px;  opacity: 0.7; }
+  100% { r: 14px; opacity: 0;   }
+}
+.city-pulse         { animation: city-pulse 2.4s ease-out infinite; }
+.city-pulse-delayed { animation: city-pulse 2.4s ease-out infinite 1.2s; }
+
+/* ─────────────────────────────────────────────────────────────
+   SCROLLBAR — palette only
+   ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.30); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #2563EB; }
+
+.admin-layout ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+.admin-layout ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.20); }

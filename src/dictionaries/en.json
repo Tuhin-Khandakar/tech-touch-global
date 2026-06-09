@@ -1,0 +1,235 @@
+{
+  "site": {
+    "name": "Tech Touch Global Services",
+    "tagline": "Your Gateway to Global Success.",
+    "description": "One Platform. Multiple Global Solutions."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "studyAbroad": "Study Abroad",
+    "blog": "Blog",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "careers": "Careers",
+    "inquiry": "Free Consultation",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "headline": "Technology, Education & Global Business",
+    "headlineAccent": "One Stop Solutions",
+    "subheadline": "Tech Touch Global Services helps individuals and businesses with technology solutions, study abroad consultancy, visa support, travel services, startup investment guidance, and global trade support.",
+    "cta1": "Get Free Consultation",
+    "cta2": "Explore Services",
+    "stats": {
+      "clients": "500+",
+      "clientsLabel": "Happy Clients",
+      "countries": "20+",
+      "countriesLabel": "Countries Served",
+      "years": "5+",
+      "yearsLabel": "Years Experience",
+      "services": "8",
+      "servicesLabel": "Service Areas"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions across technology, education, visa, travel, and business domains.",
+    "tech": {
+      "title": "Technology Solutions",
+      "description": "Web, mobile, software, AI, cloud, and cybersecurity services for your business.",
+      "icon": "💻"
+    },
+    "studyAbroad": {
+      "title": "Study Abroad",
+      "description": "Expert guidance for university admissions in UK, India, China, Malaysia and more.",
+      "icon": "🎓"
+    },
+    "visa": {
+      "title": "Visa Support",
+      "description": "Student, tourist, business visa processing and documentation support.",
+      "icon": "📋"
+    },
+    "ielts": {
+      "title": "IELTS / PTE Training",
+      "description": "Online classes, mock tests, and personalized coaching for top scores.",
+      "icon": "📝"
+    },
+    "travel": {
+      "title": "Travel Services",
+      "description": "Flight booking, hotel reservations, tour packages, and travel insurance.",
+      "icon": "✈️"
+    },
+    "investment": {
+      "title": "Startup Investment",
+      "description": "Business planning, investor connections, and growth strategy consulting.",
+      "icon": "📈"
+    },
+    "exportImport": {
+      "title": "Export & Import",
+      "description": "Garments, jute, agro products export and electronics, machinery import support.",
+      "icon": "🌐"
+    },
+    "learnMore": "Learn More",
+    "viewAll": "View All Services"
+  },
+  "whyUs": {
+    "title": "Why Choose Us",
+    "subtitle": "We combine expertise, technology, and a global network to deliver results.",
+    "items": {
+      "expertise": {
+        "title": "Multi-Sector Expertise",
+        "description": "From tech to education to trade — our team covers every domain with deep knowledge."
+      },
+      "network": {
+        "title": "Global Network",
+        "description": "Partnerships with universities, embassies, companies, and institutions worldwide."
+      },
+      "technology": {
+        "title": "Technology-Driven",
+        "description": "We use the latest tools and platforms to deliver fast, accurate results for clients."
+      },
+      "consultation": {
+        "title": "Free Consultation",
+        "description": "Every client starts with a free consultation — no cost, no obligation."
+      },
+      "affordable": {
+        "title": "Affordable Services",
+        "description": "Transparent pricing with no hidden fees. Quality service at competitive rates."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Our team is available around the clock to answer your questions and concerns."
+      }
+    }
+  },
+  "countries": {
+    "title": "Countries We Support",
+    "subtitle": "Study, travel, or do business — we support you in these destinations.",
+    "viewDetails": "View Details"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real stories from students, travelers, and businesses we've helped."
+  },
+  "cta": {
+    "title": "Book Your Free Consultation Today",
+    "subtitle": "Talk to our experts and get a personalized plan — completely free.",
+    "button": "Get Free Consultation",
+    "whatsapp": "Chat on WhatsApp"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help. Reach out through any channel.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Office Hours",
+    "hoursValue": "Sun – Thu: 9am – 6pm",
+    "followUs": "Follow Us"
+  },
+  "inquiry": {
+    "title": "Free Consultation Request",
+    "subtitle": "Fill in your details and our team will contact you within 24 hours.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "service": "Service Interested In",
+    "message": "Your Message",
+    "messagePlaceholder": "Tell us about your requirements...",
+    "submit": "Submit Request",
+    "submitting": "Submitting...",
+    "success": "Your request has been submitted! We'll contact you within 24 hours.",
+    "error": "Something went wrong. Please try again or contact us directly."
+  },
+  "payment": {
+    "title": "Make Payment",
+    "subtitle": "Pay via bKash, Nagad, or bank transfer and submit your transaction ID.",
+    "method": "Payment Method",
+    "transactionId": "Transaction ID",
+    "senderNumber": "Your bKash / Nagad Number",
+    "amount": "Amount Paid",
+    "service": "Service",
+    "submit": "Submit Payment",
+    "success": "Payment submitted! Admin will confirm within a few hours.",
+    "instructions": {
+      "bkash": "Send money to our bKash personal number and paste your transaction ID below.",
+      "nagad": "Send money to our Nagad personal number and paste your transaction ID below.",
+      "bank": "Transfer to our bank account and upload the receipt reference below."
+    }
+  },
+  "blog": {
+    "title": "Latest News & Articles",
+    "subtitle": "Insights on study abroad, visa updates, tech trends, and global trade.",
+    "readMore": "Read More",
+    "allPosts": "All Articles",
+    "noPosts": "No articles yet. Check back soon!"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Moments from our events, student orientations, and client success stories.",
+    "all": "All",
+    "noItems": "No gallery items yet."
+  },
+  "about": {
+    "title": "About Tech Touch Global Services",
+    "subtitle": "A global technology, education, travel, and business solutions company headquartered in Bangladesh.",
+    "mission": {
+      "title": "Our Mission",
+      "content": "To empower individuals and businesses with world-class technology, education, and global trade solutions — delivered with integrity, expertise, and care."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "To be the most trusted multi-sector consultancy in South Asia, connecting our clients to global opportunities."
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "A diverse team of professionals across technology, education, travel, and trade."
+    }
+  },
+  "careers": {
+    "title": "Join Our Team",
+    "subtitle": "Be part of a growing global company making an impact across multiple sectors.",
+    "apply": "Apply Now",
+    "type": {
+      "full-time": "Full Time",
+      "part-time": "Part Time",
+      "internship": "Internship",
+      "remote": "Remote"
+    },
+    "noOpenings": "No current openings. Follow us on social media for updates."
+  },
+  "studyAbroad": {
+    "title": "Study Abroad",
+    "subtitle": "Choose your destination and start your international education journey with us.",
+    "countries": {
+      "uk": "United Kingdom",
+      "india": "India",
+      "china": "China",
+      "malaysia": "Malaysia",
+      "australia": "Australia",
+      "usa": "United States",
+      "europe": "Europe"
+    },
+    "sections": {
+      "tuition": "Tuition & Fees",
+      "scholarship": "Scholarships",
+      "visa": "Visa Process",
+      "intake": "Intake Dates",
+      "jobs": "Job Opportunities",
+      "universities": "Top Universities"
+    },
+    "applyNow": "Apply Now",
+    "inquire": "Free Inquiry"
+  },
+  "footer": {
+    "description": "A global technology, education, travel, and business solutions company — your one-stop partner for international success.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact Info",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}

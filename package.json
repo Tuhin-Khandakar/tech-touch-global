@@ -9,9 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@21st-sdk/agent": "^0.0.18",
+    "@21st-sdk/nextjs": "^0.0.11",
+    "@21st-sdk/node": "^0.1.1",
+    "@21st-sdk/react": "^0.1.4",
+    "@ai-sdk/react": "^3.0.202",
     "@hookform/resolvers": "^5.4.0",
     "@supabase/supabase-js": "^2.107.0",
     "@tailwindcss/typography": "^0.5.19",
+    "ai": "^6.0.200",
     "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
     "framer-motion": "^12.40.0",
